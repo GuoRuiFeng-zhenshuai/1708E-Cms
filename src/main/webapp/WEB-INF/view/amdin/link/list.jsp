@@ -24,7 +24,7 @@
 	        <td>${link.name}</td>
 	        <td>${link.url}</td>
 	        <td><fmt:formatDate pattern="YYYY年MM月dd号 HH:mm:ss" value="${link.created}"></fmt:formatDate></td>
-	         <td> <input type="button" value="修改" onclick="update(${link.id})">
+	         <td> <%-- <input type="button" value="修改" onclick="update(${link.id})"> --%>
 	             &nbsp;
 	              <input type="button" value="删除" onclick="del(${link.id})">
 	         </td>

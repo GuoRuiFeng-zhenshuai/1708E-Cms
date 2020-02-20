@@ -7,9 +7,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <!-- 别名配置 -->
  <typeAliases>
     <!-- todo -->
-   <package name="com.zhaojian.beans"/>
+   <package name="com.guoruifeng.beans"/>
    <!-- todo -->
-   <package name="com.zhaojian.vo"/>
+   <package name="com.guoruifeng.vo"/>
  </typeAliases>
  
  

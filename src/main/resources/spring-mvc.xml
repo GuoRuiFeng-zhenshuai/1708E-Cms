@@ -17,7 +17,7 @@
 		
 	<!--  todo -->
 	<context:component-scan
-		base-package=" com.zhaojian.controller"></context:component-scan>
+		base-package=" com.guoruifeng.controller"></context:component-scan>
 	<!-- 视图解析图 -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -61,7 +61,7 @@
 			<mvc:exclude-mapping path="/index"/>
 			<mvc:exclude-mapping path="/pic/**"/>
 			<mvc:exclude-mapping path="/resource/**"/>
-			<bean class="com.zhaojian.web.UserInterceptor"></bean>
+			<bean class="com.guoruifeng.web.UserInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
 	

@@ -34,6 +34,7 @@
 	<!-- 导航条 头部 -->
 	<nav class="navbar navbar-default">
 		<%@include  file="common/top.jsp" %>
+		
 	</nav>
 	
 	<!-- <div class="progress">
@@ -124,18 +125,18 @@
 						<div class="row" style="text-align: center">
 							<hr width="88%" style="background-color:#D2691E;border:none;height:1px">
 							<ul class="pagination">
-								    <li><a href="/index?page=${hotList.prePage}">&laquo;</a></li>
+								    <li><a href="/index?page=${hotList.prePage}&key=${key}">&laquo;</a></li>
 								    <c:forEach begin="${hotList.pageNum-2 > 1 ? hotList.pageNum-2:1}" 
 									end="${hotList.pageNum+2 > hotList.pages ? hotList.pages:hotList.pageNum+2}" varStatus="index">    		
 								    	<c:if test="${hotList.pageNum!=index.index}">
-								    		<li><a href="/index?page=${index.index}">${index.index}</a></li>
+								    		<li><a href="/index?page=${index.index}&key=${key}">${index.index}</a></li>
 								    	</c:if>
 								    	<c:if test="${hotList.pageNum==index.index}">
-								    		<li><a href="/index?page=${index.index}"><strong> ${index.index} </strong> </a></li>
+								    		<li><a href="/index?page=${index.index}&key=${key}"><strong> ${index.index} </strong> </a></li>
 								    	</c:if>
 								    	
 								    </c:forEach>
-								    <li><a href="/index?page=${hotList.nextPage}">&raquo;</a></li>
+								    <li><a href="/index?page=${hotList.nextPage}&key=${key}">&raquo;</a></li>
 								</ul>
 						</div>
 					</div>
@@ -152,7 +153,7 @@
 					</div>
 					<div class="panel-body">
 						<c:forEach items="${imgArticles}" var="article" varStatus="index"> 
-							<a href="javascript:showArticle(${article.id})">${index.index}. ${article.title}</a>
+							<a href="javascript:showArticle(${article.id})">${index.index+1}. ${article.title}</a>
 							<br/>
 						</c:forEach>
 					</div>
@@ -192,11 +193,13 @@
 
 
 <!-- 底部 -->
-<nav class="navbar navbar-default" style="background:#000099">
- <div class="container-fluid" style="text-align:center">
- 	<div class="row" style="margin-top:13px">
+<nav class="navbar navbar-default" style="background:skyblue">
+ <div class="container-fluid" >
+  	<span style="color: red">友情链接:</span>
+ 	<!-- 友情链接 -->
+ 	<div class="row" style="margin-top:13px" align="center">
  			<c:forEach items="${linkList}" var ="link">
- 				<div class="col-md-1"><a href="${link.url}" class="fl"> ${link.name}</a></div>
+ 				<div class="col-md-1" ><a href="${link.url}" class="fl"><span style="color: green">${link.name}</span></a></div>
  			</c:forEach>
  	</div>
  	

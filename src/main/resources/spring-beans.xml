@@ -4,6 +4,7 @@
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:task="http://www.springframework.org/schema/task"
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans 
 		http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -12,13 +13,29 @@
 		http://www.springframework.org/schema/aop 
 		http://www.springframework.org/schema/aop/spring-aop.xsd
 		http://www.springframework.org/schema/tx 
-		http://www.springframework.org/schema/tx/spring-tx.xsd">
+		http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+		
 
 
+
+	<!-- 加载redis的配置wenj -->
+	
+	<import resource="classpath:redis.xml"/>
+	
+	<!-- 加载kafka监听配置 -->
+	<import resource="classpath:consumer.xml"/>
+	
+	<!-- 加载kafka生产者配置 -->
+	<import resource="classpath:producer.xml"/>
+	
+	<!-- 加载es的配置文件 -->
+	<import resource="classpath:es.xml"/>
+	<!-- spring整合线程池 -->
 
 	<!-- 1、注解扫描器 -->
 	<!-- todo -->
-	<context:component-scan base-package="com.zhaojian" >
+	<context:component-scan base-package="com.guoruifeng" >
 		<!-- 排除要要扫描的controller -->
 		<context:exclude-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
@@ -83,7 +100,7 @@
 		<!-- 配置切点表达式 -->
 		<!-- todo -->
 		<aop:pointcut 
-			expression="execution(* com.zhaojian.service.impl.*.*(..))" id="pointcut" />
+			expression="execution(* com.guoruifeng.service.impl.*.*(..))" id="pointcut" />
 		<!-- 关联事务 -->
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut" />
 
@@ -94,7 +111,7 @@
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<!-- basePackage :mapper接口所在的包 -->
 		<!-- todo -->
-		<property name="basePackage" value="com.zhaojian.dao"></property>
+		<property name="basePackage" value="com.guoruifeng.dao"></property>
 
 	</bean>
 

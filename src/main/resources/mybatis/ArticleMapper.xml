@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zhaojian.dao.ArticleMapper">
+<mapper namespace="com.guoruifeng.dao.ArticleMapper">
 
 	<resultMap type="Article" id="articleMapper">
 		<id column="id" property="id"/>
@@ -12,15 +12,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<!-- 枚举转换器 -->
 		<result property="articleType" column="articleType"
 			typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler"
-			jdbcType="INTEGER" javaType="com.zhaojian.beans.TypeEnum"/>
+			jdbcType="INTEGER" javaType="com.guoruifeng.beans.TypeEnum"/>
 		
 		
 		
 		
-		<association property="user" column="user_id" select="com.zhaojian.dao.UserMapper.findUserById"></association>
-		<association property="channel" column="channel_id" select="com.zhaojian.dao.ChannelMapper.findById"></association>
-		<association property="category" column="category_id" select="com.zhaojian.dao.CategoryMapper.findById"></association>
+		<association property="user" column="user_id" select="com.guoruifeng.dao.UserMapper.findUserById"></association>
+		<association property="channel" column="channel_id" select="com.guoruifeng.dao.ChannelMapper.findById"></association>
+		<association property="category" column="category_id" select="com.guoruifeng.dao.CategoryMapper.findById"></association>
 	</resultMap>
+	
+	<!-- 查询所有文章 -->
+	
+	<select id="findAll" resultMap="articleMapper">
+		select * from cms_article where deleted = 0 and status = 1
+	</select>
 	
 	<!-- 最新文章 -->
 	<select id="newList" resultType="Article">
